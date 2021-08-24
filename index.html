@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <title>Tutorial: Hello Dojo!</title>
     <base href="https://download.dojotoolkit.org/release-1.16.4/dojo-release-1.16.4/">
-    <link crossorigin="anonymous" rel="stylesheet" type="text/css" href="https://yiweima.github.io/flatdojo/stylesheets/theme/dojo/flat.css" />
+    <link crossorigin="anonymous" rel="stylesheet" type="text/css"
+        href="https://yiweima.github.io/flatdojo/stylesheets/theme/dojo/flat.css" />
     <script>
         var dojoConfig = {
             async: true
@@ -18,19 +19,20 @@
         lang: "dojo/_base/lang",
         at: "dojox/mvc/at"
     </script>
-    <input data-dojo-type="dijit/form/TextBox"  />
+    <input data-dojo-type="dijit/form/TextBox" />
     <button data-dojo-type="dijit/form/Button" data-dojo-props="onClick:lang.hitch(this,'onClick')">添加</button>
     <ul>
         <li>
             <span data-dojo-type="dojox/mvc/Output" data-dojo-props="value: at('rel:', 'text')"></span>
         </li>
     </ul>
+    <img src="https://dengrc.github.io/dojo/list.jpg" style="margin-top:200px;">
 </body>
 <!-- load Dojo -->
 <script src="dojo/dojo.js"></script>
 <script>
     require(['dojo/parser', 'dojox/mvc/getStateful'], function (parser, getStateful) {
-        var stateful =window.stateful= getStateful({
+        var stateful = window.stateful = getStateful({
             value: "",
             children: [],
             onClick: function () {
@@ -38,8 +40,9 @@
                 this.set("value", "")
             }
         });
-        
+
         parser.parse({ propsThis: stateful, noStart: false, template: true });
     })
 </script>
+
 </html>
