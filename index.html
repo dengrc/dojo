@@ -1,50 +1,46 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Tutorial: Hello Dojo!</title>
-    <base href="https://download.dojotoolkit.org/release-1.16.4/dojo-release-1.16.4/">
-    <link crossorigin="anonymous" rel="stylesheet" type="text/css"
-        href="https://yiweima.github.io/flatdojo/stylesheets/theme/dojo/flat.css" />
-    <script>
-        var dojoConfig = {
-            async: true
-        }
-    </script>
-</head>
+    <link
+      crossorigin="anonymous"
+      rel="stylesheet"
+      type="text/css"
+      href="https://yiweima.github.io/flatdojo/stylesheets/theme/dojo/flat.css"
+    />
+  </head>
 
-<body>
+  <body>
     <script type="dojo/require">
-        lang: "dojo/_base/lang",
-        at: "dojox/mvc/at"
+      lang: "dojo/_base/lang",at: "dojox/mvc/at"
     </script>
-    <input data-dojo-type="dijit/form/TextBox" />
-    <button data-dojo-type="dijit/form/Button" data-dojo-props="onClick:lang.hitch(this,'onClick')">添加</button>
-    <ul>
-        <li>
-            <span data-dojo-type="dojox/mvc/Output" data-dojo-props="value: at('rel:', 'text')"></span>
-        </li>
+    <input
+      data-dojo-type="dijit/form/TextBox"
+      data-dojo-props="value: at(this, 'value')"
+    />
+    <button
+      data-dojo-type="dijit/form/Button"
+      data-dojo-props="onClick:lang.hitch(this,'onClick')"
+    >
+      添加
+    </button>
+    <ul
+      data-dojo-type="dojox/mvc/Repeat"
+      data-dojo-props="children: at(this, 'children')"
+    >
+      <li
+        data-dojo-type="dojox/mvc/Group"
+        data-dojo-props="target: at('rel:', '${this.index}')"
+      >
+        <span
+          data-dojo-type="dojox/mvc/Output"
+          data-dojo-props="value: at('rel:', 'text')"
+        ></span>
+      </li>
     </ul>
-    <h3 style="margin-top:200px;">修改模板，达到如图功能</h3>
-    <a href="https://github.com/dengrc/dojo">https://github.com/dengrc/dojo</a>
-    <img src="https://dengrc.github.io/dojo/list.jpg">
-</body>
-<!-- load Dojo -->
-<script src="dojo/dojo.js"></script>
-<script>
-    require(['dojo/parser', 'dojox/mvc/getStateful'], function (parser, getStateful) {
-        var stateful = window.stateful = getStateful({
-            value: "",
-            children: [],
-            onClick: function () {
-                this.children.push({ text: this.value });
-                this.set("value", "")
-            }
-        });
-
-        parser.parse({ propsThis: stateful, noStart: false, template: true });
-    })
-</script>
-
+  </body>
+  <!-- load Dojo -->
+  <script src="https://download.dojotoolkit.org/release-1.16.4/dojo-release-1.16.4/dojo/dojo.js"></script>
+  <script src="./index.js"></script>
 </html>
